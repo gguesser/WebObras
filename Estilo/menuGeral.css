@@ -1,0 +1,45 @@
+/*Estilização do menu principal do sistema*/
+.menuGeral{
+    position: fixed;
+    background-color: #99979c;
+    left: 0%;
+    width: 10%;
+    height: 100%;
+}
+
+.menuGeral ul{
+    position: absolute;
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.menuGeral li{
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-left: 12%;
+    padding-right: 0;
+    border-bottom: 1px solid white;
+    text-decoration: none;
+    width: 100%;
+}
+
+.menuGeral a{
+    color: white;
+}
+
+.menuGeral li:hover {
+    background-color: #dddddd;
+}
+
+.barraSuperior{
+    position: absolute;
+    height: 8%;
+    width: 100%;
+    background-color: #8c8c8c;
+}
+
+.tituloCabecalho{
+    background: #f7e1b5;
+}

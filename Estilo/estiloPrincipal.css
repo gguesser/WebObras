@@ -1,0 +1,31 @@
+.DireitaIndex{
+	background-color: #0000FF;
+	height: 100%;
+}
+
+.EsquerdaIndex{
+	height: 100%;
+}
+
+@media screen and (max-width: 768px){ 
+	.EsquerdaIndex{
+		height: 35%;
+	}
+	.DireitaIndex{
+		height: 35%;
+	}
+}
+
+.DireitaIndex label{
+	color: black;
+}
+
+.FundoMenu{
+	position: absolute;
+	top: 40%;
+	left: 20%;
+}
+
+.botaoGeral{
+	padding-top: 5%; 
+}
