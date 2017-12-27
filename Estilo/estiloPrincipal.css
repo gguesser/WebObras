@@ -29,3 +29,7 @@
 .botaoGeral{
 	padding-top: 5%; 
 }
+
+.panel-heading td .botaoAndamentoObra{
+	display: none;
+}

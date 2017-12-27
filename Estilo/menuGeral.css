@@ -1,45 +1,80 @@
 /*Estilização do menu principal do sistema*/
-.menuGeral{
+/*-----------------------------------------------------------------------------------------------------------*/
+/*Menu para computadores*/
+.menuNormal{
+    z-index: 9999;
+    display: none;
     position: fixed;
     background-color: #99979c;
-    left: 0%;
     width: 10%;
     height: 100%;
 }
 
-.menuGeral ul{
+.menuNormal ul{
     position: absolute;
     list-style-type: none;
     width: 100%;
+    padding-top: 5%;
+    padding-left: 2%;
     margin: 0;
-    padding: 0;
 }
 
-.menuGeral li{
+.menuNormal li{
     padding-top: 15%;
     padding-bottom: 15%;
-    padding-left: 12%;
+    padding-left: 18%;
     padding-right: 0;
     border-bottom: 1px solid white;
     text-decoration: none;
     width: 100%;
 }
 
-.menuGeral a{
+.menuNormal a{
+    font-size: 12;
     color: white;
 }
 
-.menuGeral li:hover {
+.menuNormal li:hover {
     background-color: #dddddd;
+}
+
+.primeiroElemento{
+    border-top: 1px solid white;
 }
 
 .barraSuperior{
     position: absolute;
-    height: 8%;
+    height: 6%;
     width: 100%;
     background-color: #8c8c8c;
 }
 
 .tituloCabecalho{
     background: #f7e1b5;
+}
+
+.iconMenu{
+    padding-top: 5%;
+    padding-left:23%;
+    margin: 0;
+    width: 80%;
+    height: 12%;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+/*Menu para mobiles*/
+.menuPequeno{
+    position: relative;
+    display: none;
+    background-color: #99979c;
+    width: 100%;
+    height: 8%;
+}
+
+.menuPequeno button{
+    background: #99979c;
+    color: white;
+    width: 20%;
+    height: 100%;
+    border-radius: 0;
+    border-bottom: 1px solid white;
 }

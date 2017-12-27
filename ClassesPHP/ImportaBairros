@@ -1,0 +1,13 @@
+//$Arquivo = fopen('bairros.txt', 'r');
+//
+//$conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
+//
+//while(($Linha = fgetcsv($Arquivo)) !== false){
+//    $Linha = implode("", $Linha);
+//    if($Linha != NULL) {
+//        $sql = "INSERT INTO prefguara_bairros (codBairro, Nome) VALUES (NULL,'" . utf8_encode($Linha) . "');";
+//        mysqli_query($conexao, $sql);
+//    }
+//}
+//
+//fclose($Arquivo);
