@@ -57,12 +57,12 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <label for="">Titulo</label>
-                                                    <input type="text" class="componente_linha_1">
+                                                    <input type="text" class="componente_linha_1" name="txtTitulo">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <label for="">Rua</label>
+                                                    <label for="">Bairro</label>
                                                     <select name="cbbBairro" class="form-contro componente_linha_3">
                                                         <?php
 
@@ -79,8 +79,8 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <label for="">Bairro</label>
-                                                    <input type="text" name="txtBairro" class="componente_linha_3">
+                                                    <label for="">Rua</label>
+                                                    <input type="text" name="txtRua" class="componente_linha_3">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="">Número</label>
@@ -156,7 +156,7 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="">Data Previsão</label>
-                                                    <input type="text" name="txtEmail" class="componente_linha_3">
+                                                    <input type="text" name="dtPrevisao" class="componente_linha_3">
                                                 </div>
                                             </div>
                                         </div>

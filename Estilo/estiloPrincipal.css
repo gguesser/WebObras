@@ -30,6 +30,10 @@
 	padding-top: 5%; 
 }
 
+.panel-default div .headingEmpProcesso{
+	background-color: orange;
+}
 .panel-heading td .botaoAndamentoObra{
 	display: none;
 }
+

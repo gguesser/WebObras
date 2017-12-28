@@ -6,6 +6,8 @@
 
     if($instanciaConexao){
 
+
+        $tituloObra      = $_POST['txtTitulo'];
         $nomeMorador     = $_POST['txtNome'];
         $dataRegistro    = date('Y-m-d');
         $rua             = $_POST['txtRua'];
@@ -21,8 +23,8 @@
         $codigoMateriais = NULL;
 
         $sql = 'INSERT INTO prefguara_obras';
-        $sql.= ' (codProtocolo, Nome, dtRegistro, Rua, Telefone, Email, dscProblema, Fiscal, dtPrevisao, Status, dscAdicional, dtConclusao, CodigoMateriais, Bairro)';
-        $sql.= " VALUES (NULL, '".$nomeMorador."', '".$dataRegistro."', '".$rua."', '".$telefoneMorador."', '".$emailMorador."', '".$problema."', '".$fiscal."', '".$dataPrevisao."', '".$status."', '".$dscAdicional."', '".$dataConclusao."', '".$bairro."');";
+        $sql.= ' (codProtocolo, Titulo, Nome, dtRegistro, Rua, Telefone, Email, dscProblema, Fiscal, dtPrevisao, Status, dscAdicional, dtConclusao, CodigoMateriais, Bairro)';
+        $sql.= " VALUES (NULL, '".$tituloObra."','".$nomeMorador."', '".$dataRegistro."', '".$rua."', '".$telefoneMorador."', '".$emailMorador."', '".$problema."', '".$fiscal."', '".$dataPrevisao."', '".$status."', '".$dscAdicional."', '".$dataConclusao."', '".$codigoMateriais."', '".$bairro."');";
 
         $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
         $insercaoBanco = mysqli_query($conexao, $sql) or die("Erro");
