@@ -2,7 +2,7 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 /*Menu para computadores*/
 .menuNormal{
-    z-index: 9999;
+    z-index: 2;
     display: none;
     position: fixed;
     background-color: #99979c;

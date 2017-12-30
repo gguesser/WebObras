@@ -33,7 +33,20 @@
 .panel-default div .headingEmpProcesso{
 	background-color: orange;
 }
-.panel-heading td .botaoAndamentoObra{
-	display: none;
+/*.panel-heading td .botaoAndamentoObra{*/
+	/*display: none;*/
+/*}*/
+
+.tipoModal:before{
+	background: #000;
 }
 
+.tipoModal, .adicionaMaterial{
+	display: none;
+	z-index: 9999;
+}
+
+/*TABELAS*/
+.painelMateriais{
+	margin-top: 1%;
+}

@@ -39,7 +39,7 @@
                             <table class="larguraTable">
                                 <tr>
                                     <td>
-                                        Em processo
+                                        <b>Em processo</b>
                                     </td>
                                     <td>
                                         <input type="text" value="Pesquisa" class="posicionamentoDireita">
@@ -55,20 +55,21 @@
                             print '<table class="table">';
 
                             print '<tr>';
-                                print '<td>Protocolo</td>';
-                                print '<td>Titulo</td>';
-                                print '<td>Bairro</td>';
-                                print '<td>Rua</td>';
-                                print '<td>Morador</td>';
-                                print '<td>Abertura</td>';
-                                print '<td>Fiscal</td>';
-                                print '<td>Previsão</td>';
+                                print '<td><b>Protocolo</b></td>';
+                                print '<td><b>Titulo</b></td>';
+                                print '<td><b>Bairro</b></td>';
+                                print '<td><b>Rua</b></td>';
+                                print '<td><b>Morador</b></td>';
+                                print '<td><b>Abertura</b></td>';
+                                print '<td><b>Fiscal</b></td>';
+                                print '<td><b>Previsão</b></td>';
                             print '</tr>';
 
                             foreach($resultadoSelecao as $obrasSelecionadas){
                                 print '<tr>';
                                     print '<td>';
-                                        print $obrasSelecionadas['codProtocolo'];
+                                        $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
+                                        print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
                                     print '</td>';
                                     print '<td>';
                                         print utf8_encode($obrasSelecionadas['Titulo']);
@@ -105,7 +106,7 @@
                                     <table class="larguraTable">
                                         <tr>
                                             <td>
-                                                Abertas
+                                                <b>Abertas</b>
                                             </td>
                                             <td>
                                                 <input type="text" value="Pesquisa" class="posicionamentoDireita">
@@ -119,17 +120,18 @@
                                     print '<table class="table">';
 
                                     print '<tr>';
-                                        print '<td>Protocolo</td>';
-                                        print '<td>Titulo</td>';
-                                        print '<td>Bairro</td>';
-                                        print '<td>Abertura</td>';
-                                        print '<td>Fiscal</td>';
+                                        print '<td><b>Protocolo</b></td>';
+                                        print '<td><b>Titulo</b></td>';
+                                        print '<td><b>Bairro</b></td>';
+                                        print '<td><b>Abertura</b></td>';
+                                        print '<td><b>Fiscal</b></td>';
                                     print '</tr>';
 
                                     foreach($resultadoSelecao as $obrasSelecionadas){
                                         print '<tr>';
                                             print '<td>';
-                                                print $obrasSelecionadas['codProtocolo'];
+                                                $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
+                                                print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
                                             print '</td>';
                                             print '<td>';
                                                 print utf8_encode($obrasSelecionadas['Titulo']);
@@ -157,7 +159,7 @@
                                     <table class="larguraTable">
                                         <tr>
                                             <td>
-                                                Concluídas
+                                                <b>Concluídas</b>
                                             </td>
                                             <td>
                                                 <input type="text" value="Pesquisa" class="posicionamentoDireita">
@@ -171,17 +173,18 @@
                                     print '<table class="table">';
 
                                     print '<tr>';
-                                        print '<td>Protocolo</td>';
-                                        print '<td>Titulo</td>';
-                                        print '<td>Bairro</td>';
-                                        print '<td>Conclusao</td>';
-                                        print '<td>Fiscal</td>';
+                                        print '<td><b>Protocolo</b></td>';
+                                        print '<td><b>Titulo</b></td>';
+                                        print '<td><b>Bairro</b></td>';
+                                        print '<td><b>Conclusao</b></td>';
+                                        print '<td><b>Fiscal</b></td>';
                                     print '</tr>';
 
                                     foreach($resultadoSelecao as $obrasSelecionadas){
                                         print '<tr>';
                                             print '<td>';
-                                                print $obrasSelecionadas['codProtocolo'];
+                                                $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
+                                                print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
                                             print '</td>';
                                             print '<td>';
                                                 print utf8_encode($obrasSelecionadas['Titulo']);
