@@ -197,6 +197,7 @@
 
                                                         ?>
                                                     </select>
+                                                    <input type="hidden" value="<?php print $resultadoSelecao['Status']?>" name="cbbStatus">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label for="">Data Previsão</label>
@@ -218,37 +219,12 @@
                                                                 </tr>
                                                             </table>
                                                         </div>
-                                                        <table class="table">
-                                                            <tr>
-                                                                <td class="text-center"><b>Nome</b></td>
-                                                                <td class="text-center"><b>Quantidade</b></td>
-                                                                <td class="text-center"><b>Unidade de Medida</b></td>
-                                                            </tr>
+                                                        <table class="table tableMateriais">
                                                             <?php
 
-                                                                $sql = ' SELECT *, SUM(Quantidade), material.* FROM prefguara_materiaisPorObras as matobra';
-                                                                $sql.= ' LEFT JOIN prefguara_cadastroMateriais as material ON(material.codMat = matobra.Material)';
-                                                                $sql.= ' WHERE Obra = '.$resultadoSelecao['codProtocolo'];
-                                                                $sql.= ' GROUP BY Material';
-
-                                                                $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-                                                                $selecaoMateriais = mysqli_query($conexaoBanco, $sql);
-
-                                                                while($resultadoSelecao = mysqli_fetch_assoc($selecaoMateriais)){
-                                                                    print '<tr>';
-                                                                        print '<td class="text-center">';
-                                                                            print $resultadoSelecao['NomeMat'];
-                                                                        print '</td>';
-                                                                        print '<td class="text-center">';
-                                                                            print $resultadoSelecao['SUM(Quantidade)'];
-                                                                        print '</td>';
-                                                                        print '<td class="text-center">';
-                                                                            print $resultadoSelecao['UnidadeMedidaMat'];
-                                                                        print '</td>';
-                                                                    print '</tr>';
-                                                                }
-
-                                                                mysqli_close($conexaoBanco);
+                                                                include('.././Controller/CcadastroObrasClass.php');
+                                                                $instanciaCarregaMaterial = new CcadastroObrasClass();
+                                                                $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
 
                                                             ?>
                                                         </table>
@@ -356,15 +332,16 @@
                                 <table class="larguraTable">
                                     <tr>
                                         <td>
-                                            <select name="cbbMaterial" class="form-contro componente_linha_3">
+                                            <input type="hidden" value="<?php print $resultadoSelecao['codProtocolo']?>" name="txtProbocoloModal">
+                                            <select id="cbbMaterialId" name="cbbMaterial" class="form-contro componente_linha_3">
                                                 <?php
-                                                    $sql = 'SELECT NomeMat FROM prefguara_cadastroMateriais';
+                                                    $sql = 'SELECT * FROM prefguara_cadastroMateriais';
 
                                                     $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
                                                     $selecaoMateriais = mysqli_query($conexaoBanco, $sql);
 
                                                     while($resultadoSelecao = mysqli_fetch_assoc($selecaoMateriais)){
-                                                        print '<option>'.$resultadoSelecao['NomeMat'].'</option>';
+                                                        print '<option value="'.$resultadoSelecao['codMat'].'">'.$resultadoSelecao['NomeMat'].'</option>';
                                                     }
 
                                                     mysqli_close($conexaoBanco);
@@ -386,7 +363,7 @@
                     </div>
                     <div class="modal-footer">
                         <input type = "button" value="Não encontrou o material desejado ?" onclick = "acaoModais('ativa', '.adicionaMaterial')" class="btn pull-left" data-toggle="modal" data-target=".adicionaMaterial" >
-                        <button type="button" class="btn btn-success">Salvar</button>
+                        <button type="button" onclick="adicionaMaterial()" class="btn btn-success">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -396,11 +373,30 @@
 </html>
 
 <script>
-    function acaoModais(prAcao, prModal) {
+    function acaoModais(prAcao, prModal){
         if (prAcao == 'ativa') {
-            prModal.show();
+            $(prModal).show();
         } else {
-            prModal.hide();
+            $(prModal).hide();
         }
     }
+
+    function adicionaMaterial(){
+
+        $.ajax({
+            url: '.././Controller/incluiMaterialObra.php',
+            type: 'GET',
+            dataType: "html",
+            data: 'protocolo=' + $("input[type=text][name=txtProtocolo]").val() + '&material=' + $('#cbbMaterialId :selected').val() + '&quantidade=' + $("input[type=text][name=txtQuantidade]").val(),
+            success: function(data) {
+                if(data){
+                    $('.tableMateriais').html(data);
+                    alert('Material adicionado com sucesso!');
+                }else{
+                    alert('Problemas ao adicionar material.');
+                }
+            }
+        });
+    }
+
 </script>
