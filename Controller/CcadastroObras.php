@@ -6,7 +6,6 @@
 
     if($instanciaConexao){
 
-
         $protocolo       = $_POST['txtProtocolo'];
         $tituloObra      = $_POST['txtTitulo'];
         $nomeMorador     = $_POST['txtNome'];
@@ -25,7 +24,7 @@
         $codigoMateriais = NULL;
 
 
-        if($protocolo > 0) {
+        if($protocolo < 1) {
 
             $status = '1';
 
@@ -38,7 +37,7 @@
         }else{
 
             $sql = 'UPDATE prefguara_obras';
-            $sql.= ' SET Titulo = '.$tituloObra.', Nome = '.$nomeMorador.', Rua = '.$rua.', Numero = '.$numero.', Telefone = '.$telefoneMorador.', Email = '.$emailMorador.', dscProblema = '.$problema.', Fiscal = '.$fiscal.', dtPrevisao = '.$dataPrevisao.', Status = '.$status.', dscAdicional = '.$dscAdicional.', Bairro = '.$bairro;
+            $sql.= ' SET Titulo = "'.$tituloObra.'", Nome = "'.$nomeMorador.'", Rua = "'.$rua.'", Numero = '.$numero.', Telefone = '.$telefoneMorador.', Email = "'.$emailMorador.'", dscProblema = "'.$problema.'", Fiscal = "'.$fiscal.'", dtPrevisao = "'.$dataPrevisao.'", Status = "'.$status.'", dscAdicional = "'.$dscAdicional.'", Bairro = "'.$bairro.'"';
             $sql.= ' WHERE codProtocolo = '.$protocolo;
 
             $acao = 'ALTERADA';
@@ -67,4 +66,3 @@
             print 'alert(\'Não foi possível acessar a base de dados.\');';
         print '</script>';
     }
-

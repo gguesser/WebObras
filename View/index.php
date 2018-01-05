@@ -5,34 +5,35 @@
 		$instanciaHeader -> headerPrincipal('Secretaria de Infraestrutura');
 	?>
 	<body>
-		<div class="col-md-9 col-sm-6 EsquerdaIndex">
-			<div class="row">
-
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-6 DireitaIndex">
-			<div class="FundoMenu">
-				<div class="row">
-					<div class="col-md-6">
-						<form action="main.php" method="post">
-							<label>Usuário: </label>
-							<input type="text" name="txtUsuario">
-							<label>Senha: </label>
-							<input type="password" name="txtSenha">
-							<div class="row">
-								<div class="col-md-4">
-                                    <h1></h1>
-								</div>
-								<div class="col-md-4">
-									<input type="submit" name="" value="Entrar" class="botaoGeral">
-								</div>
-								<div class="col-md-4">
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="row">
+            <div class="col-xs-12 col-md-9 EsquerdaIndex">
+                <div class="titulo">
+                    <h1 class="tituloH1">Web Obras</h1>
+                    <h2 class="tituloH2">Secretaria de Infraestrutura</h2>
+                </div>
+                <img src=".././Imagens/atende.php.png" alt="">
+            </div>
+            <div class="col-xs-12 col-md-3 DireitaIndex">
+                <form action=".././View/indexObras.php" method="POST">
+                    <div class="FundoMenu">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <form action="main.php" method="post">
+                                    <label class="componente_linha_3">Usuário: </label>
+                                    <input type="text" name="txtUsuario" class="componente_linha_3">
+                                    <label class="componente_linha_3">Senha: </label>
+                                    <input type="password" name="txtSenha" class="componente_linha_3">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <input type="submit" name="" value="Entrar" class="btn btn-success pull-right">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 	</body>
 </htlm>

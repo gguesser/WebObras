@@ -1,4 +1,5 @@
 <?php
+
     $obra = $_GET['protocolo'];
     $material = $_GET['material'];
     $quantidade = $_GET['quantidade'];
@@ -16,3 +17,5 @@
             $instanciaCarregaMaterial -> carregaMateriais($obra);
         print '</table>';
     }
+
+    mysqli_close($conexaoBanco);

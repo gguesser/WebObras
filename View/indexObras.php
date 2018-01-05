@@ -33,9 +33,10 @@
                                 </tr>
                             </table>
                         </div>
+
                     </div>
                     <div class="panel panel-default">
-                        <div class="panel-heading headingEmpProcesso">
+                        <div class="panel-heading">
                             <table class="larguraTable">
                                 <tr>
                                     <td>

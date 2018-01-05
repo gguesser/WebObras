@@ -204,33 +204,38 @@
                                                     <input type="text" name="dtPrevisao" class="componente_linha_3">
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="panel panel-default painelMateriais">
-                                                        <div class="panel-heading">
-                                                            <table class="larguraTable">
-                                                                <tr>
-                                                                    <td>
-                                                                        Materiais Utilizados
-                                                                    </td>
-                                                                    <td>
-                                                                        <input type = "button" value="Adicionar Material" onclick = "acaoModais('ativa', '.adicionaMaterial')" class="btn btn-primary posicionamentoDireita" data-toggle="modal" data-target=".adicionaMaterial" >
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                        <table class="table tableMateriais">
-                                                            <?php
+                                            <?php
 
-                                                                include('.././Controller/CcadastroObrasClass.php');
-                                                                $instanciaCarregaMaterial = new CcadastroObrasClass();
-                                                                $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
+                                                if(isset($resultadoSelecao)){
 
-                                                            ?>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                    print '<div class="row">';
+                                                        print '<div class="col-md-12">';
+                                                            print '<div class="panel panel-default painelMateriais">';
+                                                                print '<div class="panel-heading">';
+                                                                    print '<table class="larguraTable">';
+                                                                        print '<tr>';
+                                                                            print '<td>';
+                                                                                print 'Materiais Utilizados';
+                                                                            print '</td>';
+                                                                            print '<td>';
+                                                                                print '<input type = "button" value="Adicionar Material" onclick = "acaoModais(\'ativa\', \'.adicionaMaterial\')" class="btn btn-primary posicionamentoDireita" data-toggle="modal" data-target=".adicionaMaterial" >';
+                                                                            print '</td>';
+                                                                        print '</tr>';
+                                                                    print '</table>';
+                                                                print '</div>';
+                                                                print '<table class="table tableMateriais">';
+
+                                                                        include('.././Controller/CcadastroObrasClass.php');
+                                                                        $instanciaCarregaMaterial = new CcadastroObrasClass();
+                                                                        $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
+
+                                                                print '</table>';
+                                                            print '</div>';
+                                                        print '</div>';
+                                                    print '</div>';
+
+                                                }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
@@ -335,16 +340,9 @@
                                             <input type="hidden" value="<?php print $resultadoSelecao['codProtocolo']?>" name="txtProbocoloModal">
                                             <select id="cbbMaterialId" name="cbbMaterial" class="form-contro componente_linha_3">
                                                 <?php
-                                                    $sql = 'SELECT * FROM prefguara_cadastroMateriais';
 
-                                                    $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-                                                    $selecaoMateriais = mysqli_query($conexaoBanco, $sql);
+                                                    $instanciaCarregaMaterial -> selecionaMateriaisExistentes();
 
-                                                    while($resultadoSelecao = mysqli_fetch_assoc($selecaoMateriais)){
-                                                        print '<option value="'.$resultadoSelecao['codMat'].'">'.$resultadoSelecao['NomeMat'].'</option>';
-                                                    }
-
-                                                    mysqli_close($conexaoBanco);
                                                 ?>
                                             </select>
                                         </td>
@@ -362,8 +360,47 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type = "button" value="Não encontrou o material desejado ?" onclick = "acaoModais('ativa', '.adicionaMaterial')" class="btn pull-left" data-toggle="modal" data-target=".adicionaMaterial" >
+                        <input type = "button" value="Não encontrou o material desejado ?" onclick = "acaoModais('ativa', '.adicionaMaterialnovo')" class="btn pull-left" data-toggle="modal" data-target=".adicionaMaterialnovo" >
                         <button type="button" onclick="adicionaMaterial()" class="btn btn-success">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        CRIA NOVO MATERIAL-->
+        <div class="modal adicionaMaterialnovo" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <table class="larguraTable">
+                            <tr>
+                                <td>
+                                    <h5 class="modal-title"><b>Inclusão de Novo Material à lista</b></h5>
+                                </td>
+                                <td>
+                                    <button type="button" onclick="acaoModais('desativa', '.adicionaMaterialnovo')" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="">Nome</label>
+                                <input type="text" name="txtMaterialNome" class="componente_linha_3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="">Unidade de Medida</label>
+                                <input type="text" name="txtUnidadeMedida" class="componente_linha_3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="adicionaMaterialNovo()" class="btn btn-success">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -376,24 +413,43 @@
     function acaoModais(prAcao, prModal){
         if (prAcao == 'ativa') {
             $(prModal).show();
+
         } else {
+
             $(prModal).hide();
+
         }
     }
 
     function adicionaMaterial(){
-
         $.ajax({
             url: '.././Controller/incluiMaterialObra.php',
             type: 'GET',
             dataType: "html",
-            data: 'protocolo=' + $("input[type=text][name=txtProtocolo]").val() + '&material=' + $('#cbbMaterialId :selected').val() + '&quantidade=' + $("input[type=text][name=txtQuantidade]").val(),
+            data: 'protocolo=' + $("input[type=text][name=txtProtocolo]").val() + '&material=' + $("#cbbMaterialId :selected").val() + '&quantidade=' + $("input[type=text][name=txtQuantidade]").val(),
             success: function(data) {
                 if(data){
                     $('.tableMateriais').html(data);
                     alert('Material adicionado com sucesso!');
                 }else{
                     alert('Problemas ao adicionar material.');
+                }
+            }
+        });
+    }
+
+    function adicionaMaterialNovo(){
+        $.ajax({
+            url: '.././Controller/incluiMaterialNovo.php',
+            type: 'GET',
+            dataType: "html",
+            data: 'material=' + $("input[type=text][name=txtMaterialNome]").val() + '&unidadeMedida=' + $("input[type=text][name=txtUnidadeMedida]").val(),
+            success: function(data) {
+                if(data){
+                    $('#cbbMaterialId').html(data);
+                    alert('Novo material adicionado com sucesso à lista de materiais!');
+                }else{
+                    alert('Problemas ao adicionar material à lista de materiais.');
                 }
             }
         });

@@ -40,4 +40,18 @@ class CcadastroObrasClass
 
             mysqli_close($conexaoBanco);
     }
+
+    public static function selecionaMateriaisExistentes(){
+
+        $sql = 'SELECT * FROM prefguara_cadastroMateriais';
+
+        $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
+        $selecaoMateriais = mysqli_query($conexaoBanco, $sql);
+
+        while($resultadoSelecao = mysqli_fetch_assoc($selecaoMateriais)){
+            print '<option value="'.$resultadoSelecao['codMat'].'">'.$resultadoSelecao['NomeMat'].'</option>';
+        }
+
+        mysqli_close($conexaoBanco);
+    }
 }
