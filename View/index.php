@@ -3,6 +3,13 @@
 		require('.././ClassesPHP/Header.class.php');
 		$instanciaHeader = new Header;
 		$instanciaHeader -> headerPrincipal('Secretaria de Infraestrutura');
+
+		if(isset($_GET['Erro'])){
+		    print '<script>';
+		        print 'swal("Erro!", "Usuário ou Senha incorretos!", "error");';
+		    print '</script>';
+        }
+
 	?>
 	<body>
         <div class="row">
@@ -14,7 +21,7 @@
                 <img src=".././Imagens/atende.php.png" alt="">
             </div>
             <div class="col-xs-12 col-md-3 DireitaIndex">
-                <form action=".././View/indexObras.php" method="POST">
+                <form action=".././Controller/verificaLogin.php" method="POST">
                     <div class="FundoMenu">
                         <div class="row">
                             <div class="col-xs-12 col-md-12">

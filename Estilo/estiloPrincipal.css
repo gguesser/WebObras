@@ -7,6 +7,12 @@
 	height: 100%;
 }
 
+.cabecalho{
+	height: 13%;
+	width: 100%;
+	background: #fcf8e3;
+}
+
 @media screen and (max-width: 768px){
 	.EsquerdaIndex{
 		height: 35%;
@@ -86,6 +92,7 @@
 }
 
 @media only screen and (min-width: 1138px){
+
 	.FundoMenu{
 		position: absolute;
 		left: 10%;
@@ -93,11 +100,40 @@
 		top: 40%;
 	}
 
+    .EsquerdaIndex{
+        background-color: #fcf8e3;
+    }
+
 	.EsquerdaIndex img{
 		position: absolute;
-		top: 25%;
+		top: 18%;
 		left: 40%;
 	}
+
+    .titulo{
+        position: absolute;
+        height: 25%;
+        width: 100%;
+        top: 65%;
+    }
+
+    .tituloH1{
+        position: absolute;
+        left: 41%;
+    }
+
+    .tituloH2{
+        position: absolute;
+        top: 30%;
+        left: 31%
+    }
+
+	.cabecalho h3{
+		position: relative;
+		top: 5%;
+		left: 45%;
+	}
+
 }
 
 .panel-default > .panel-heading{

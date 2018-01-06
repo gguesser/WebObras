@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-1">
             </div>
-            <div class="col-sm-12 menuPequeno">
+            <div class="col-xs-12 col-sm-12 menuPequeno">
                 <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                     Opções
                     <span class="caret"></span>
@@ -41,209 +41,213 @@
                     <li><a href="#">Separated link</a></li>
                 </ul>
             </div>
-            <div class="col-sm-12 col-md-10 configuracaoEstrutural">
-<!--                <div class="container">-->
-                    <form action="../Controller/CcadastroObras.php" method="POST">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <h3 class="fontePadrao">Cadastro de Obras</h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <table class="larguraTable">
-                                            <tr>
-                                                <td>
-                                                    Informações
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                        if(isset($resultadoSelecao)) {
-                                                            print '<input type = "button" value = "Andamento Obra" onclick = "acaoModais(\'ativa\', \'.tipoModal\')" class="btn btn-warning posicionamentoDireita botaoAndamentoObra" data-toggle="modal" data-target=".tipoModal" >';
-                                                        }
-                                                    ?>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="rowEspacamento">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="">Protocolo</label>
-                                                    <input type="text" class="componente_linha_1" name="txtProtocolo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['codProtocolo'] : NULL;?>">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <label for="">Titulo</label>
-                                                    <input type="text" class="componente_linha_1" name="txtTitulo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Titulo'] : NULL;?>">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="">Bairro</label>
-                                                    <select name="cbbBairro" class="form-contro componente_linha_3">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cabecalho">
+                    <h3 class="fontePadrao">Cadastro de Obra</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                </div>
+                <div class="col-sm-12 col-md-10 configuracaoEstrutural">
+    <!--                <div class="container">-->
+                        <form action="../Controller/CcadastroObras.php" method="POST">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <table class="larguraTable">
+                                                <tr>
+                                                    <td>
+                                                        Informações
+                                                    </td>
+                                                    <td>
                                                         <?php
+                                                            if(isset($resultadoSelecao)) {
+                                                                print '<input type = "button" value = "Andamento Obra" onclick = "acaoModais(\'ativa\', \'.tipoModal\')" class="btn btn-warning posicionamentoDireita botaoAndamentoObra" data-toggle="modal" data-target=".tipoModal" >';
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="rowEspacamento">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="">Protocolo</label>
+                                                        <input type="text" class="componente_linha_1" name="txtProtocolo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['codProtocolo'] : NULL;?>">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <label for="">Titulo</label>
+                                                        <input type="text" class="componente_linha_1" name="txtTitulo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Titulo'] : NULL;?>">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="">Bairro</label>
+                                                        <select name="cbbBairro" class="form-contro componente_linha_3">
+                                                            <?php
 
-                                                        $sql = 'SELECT Nome FROM prefguara_bairros';
+                                                            $sql = 'SELECT Nome FROM prefguara_bairros';
 
-                                                        $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-                                                        $selectBanco = mysqli_query($conexao, $sql);
+                                                            $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
+                                                            $selectBanco = mysqli_query($conexao, $sql);
 
-                                                        while($selecaoBairros = mysqli_fetch_assoc($selectBanco)) {
+                                                            while($selecaoBairros = mysqli_fetch_assoc($selectBanco)) {
 
-                                                            if(isset($resultadoSelecao)){
-                                                                if($selecaoBairros['Nome'] == $resultadoSelecao['Bairro']){
-                                                                    $value =  'selected';
+                                                                if(isset($resultadoSelecao)){
+                                                                    if($selecaoBairros['Nome'] == $resultadoSelecao['Bairro']){
+                                                                        $value =  'selected';
+                                                                    }
+                                                                    else{
+                                                                        $value = "";
+                                                                    }
                                                                 }
-                                                                else{
-                                                                    $value = "";
-                                                                }
+
+                                                                print '<option '. $value .'>' . utf8_decode($selecaoBairros['Nome']) . '</option>';
                                                             }
 
-                                                            print '<option '. $value .'>' . utf8_decode($selecaoBairros['Nome']) . '</option>';
-                                                        }
+                                                            mysqli_close($conexaoBanco);
 
-                                                        mysqli_close($conexaoBanco);
-
-                                                        ?>
-                                                    </select>
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">Rua</label>
+                                                        <input type="text" name="txtRua" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Rua'] : NULL;?>">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">Número</label>
+                                                        <input type="text" name="txtNumero" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Numero'] : NULL;?>">
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label for="">Rua</label>
-                                                    <input type="text" name="txtRua" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Rua'] : NULL;?>">
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label for="">Número</label>
-                                                    <input type="text" name="txtNumero" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Numero'] : NULL;?>">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="comment">Descrição do problema</label>
-                                                        <textarea name="dscProblema" id="" cols="30" rows="5" class="form-contro componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['dscProblema'] : NULL;?>"></textarea>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="comment">Descrição do problema</label>
+                                                            <textarea name="dscProblema" id="" cols="30" rows="5" class="form-contro componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['dscProblema'] : NULL;?>"></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        Morador
-                                    </div>
-                                    <div class="panel-body">
-                                         <div class="rowEspacamento">
-                                             <div class="row">
-                                                <div class="col-md-4">
-                                                    <label for="">Nome</label>
-                                                    <input type="text" name="txtNome" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Nome'] : NULL;?>">
-                                                </div>
-                                                 <div class="col-md-4">
-                                                     <label for="">Telefone</label>
-                                                     <div class="telefone" style="width: 100%">
-                                                         <input type="text" name="txtTelefoneDDD" style="width: 15%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 1, 2) : NULL;?>">
-                                                         <input type="text" name="txtTelefone" style="width: 83%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 3, 9) : NULL;?>">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Morador
+                                        </div>
+                                        <div class="panel-body">
+                                             <div class="rowEspacamento">
+                                                 <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label for="">Nome</label>
+                                                        <input type="text" name="txtNome" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Nome'] : NULL;?>">
+                                                    </div>
+                                                     <div class="col-md-4">
+                                                         <label for="">Telefone</label>
+                                                         <div class="telefone" style="width: 100%">
+                                                             <input type="text" name="txtTelefoneDDD" style="width: 15%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 1, 2) : NULL;?>">
+                                                             <input type="text" name="txtTelefone" style="width: 83%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 3, 9) : NULL;?>">
+                                                         </div>
+                                                     </div>
+                                                     <div class="col-md-4">
+                                                         <label for="">E-mail</label>
+                                                         <input type="text" name="txtEmail" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Email'] : NULL;?>">
                                                      </div>
                                                  </div>
-                                                 <div class="col-md-4">
-                                                     <label for="">E-mail</label>
-                                                     <input type="text" name="txtEmail" class="componente_linha_3" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['Email'] : NULL;?>">
-                                                 </div>
                                              </div>
-                                         </div>
-                                    </div>
-                                 </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        Adicional
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="rowEspacamento">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <label for="comment">Descrição adicional</label>
-                                                    <textarea name="dscAdicional" id="" cols="30" rows="5" class="form-contro componente_linha_3"></textarea>
+                                        </div>
+                                     </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Adicional
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="rowEspacamento">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="comment">Descrição adicional</label>
+                                                        <textarea name="dscAdicional" id="" cols="30" rows="5" class="form-contro componente_linha_3"></textarea>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-8">
-                                                    <label for="">Fiscal</label>
-                                                    <select name="cbbFiscal" class="form-contro componente_linha_3">
-                                                        <?php
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <label for="">Fiscal</label>
+                                                        <select name="cbbFiscal" class="form-contro componente_linha_3">
+                                                            <?php
 
-                                                        $sql = 'SELECT Nome FROM prefguara_Fiscais';
+                                                            $sql = 'SELECT Nome FROM prefguara_Fiscais';
 
-                                                        $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-                                                        $selectBanco = mysqli_query($conexao, $sql);
+                                                            $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
+                                                            $selectBanco = mysqli_query($conexao, $sql);
 
-                                                        while($selecaoFiscais = mysqli_fetch_assoc($selectBanco)) {
+                                                            while($selecaoFiscais = mysqli_fetch_assoc($selectBanco)) {
 
-                                                            if(isset($resultadoSelecao)){
-                                                                if(utf8_encode($selecaoFiscais['Nome']) == $resultadoSelecao['Fiscal']){
-                                                                    $value =  'selected';
+                                                                if(isset($resultadoSelecao)){
+                                                                    if(utf8_encode($selecaoFiscais['Nome']) == $resultadoSelecao['Fiscal']){
+                                                                        $value =  'selected';
+                                                                    }
+                                                                    else{
+                                                                        $value = "";
+                                                                    }
                                                                 }
-                                                                else{
-                                                                    $value = "";
-                                                                }
+
+                                                                print '<option '.$value.'>' . utf8_encode($selecaoFiscais['Nome']) . '</option>';
                                                             }
 
-                                                            print '<option '.$value.'>' . utf8_encode($selecaoFiscais['Nome']) . '</option>';
-                                                        }
+                                                            mysqli_close($conexaoBanco);
 
-                                                        mysqli_close($conexaoBanco);
-
-                                                        ?>
-                                                    </select>
-                                                    <input type="hidden" value="<?php print $resultadoSelecao['Status']?>" name="cbbStatus">
+                                                            ?>
+                                                        </select>
+                                                        <input type="hidden" value="<?php print $resultadoSelecao['Status']?>" name="cbbStatus">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label for="">Data Previsão</label>
+                                                        <input type="text" name="dtPrevisao" class="componente_linha_3">
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label for="">Data Previsão</label>
-                                                    <input type="text" name="dtPrevisao" class="componente_linha_3">
-                                                </div>
-                                            </div>
-                                            <?php
+                                                <?php
 
-                                                if(isset($resultadoSelecao)){
+                                                    if(isset($resultadoSelecao)){
 
-                                                    print '<div class="row">';
-                                                        print '<div class="col-md-12">';
-                                                            print '<div class="panel panel-default painelMateriais">';
-                                                                print '<div class="panel-heading">';
-                                                                    print '<table class="larguraTable">';
-                                                                        print '<tr>';
-                                                                            print '<td>';
-                                                                                print 'Materiais Utilizados';
-                                                                            print '</td>';
-                                                                            print '<td>';
-                                                                                print '<input type = "button" value="Adicionar Material" onclick = "acaoModais(\'ativa\', \'.adicionaMaterial\')" class="btn btn-primary posicionamentoDireita" data-toggle="modal" data-target=".adicionaMaterial" >';
-                                                                            print '</td>';
-                                                                        print '</tr>';
+                                                        print '<div class="row">';
+                                                            print '<div class="col-md-12">';
+                                                                print '<div class="panel panel-default painelMateriais">';
+                                                                    print '<div class="panel-heading">';
+                                                                        print '<table class="larguraTable">';
+                                                                            print '<tr>';
+                                                                                print '<td>';
+                                                                                    print 'Materiais Utilizados';
+                                                                                print '</td>';
+                                                                                print '<td>';
+                                                                                    print '<input type = "button" value="Adicionar Material" onclick = "acaoModais(\'ativa\', \'.adicionaMaterial\')" class="btn btn-primary posicionamentoDireita" data-toggle="modal" data-target=".adicionaMaterial" >';
+                                                                                print '</td>';
+                                                                            print '</tr>';
+                                                                        print '</table>';
+                                                                    print '</div>';
+                                                                    print '<table class="table tableMateriais">';
+
+                                                                            include('.././Controller/CcadastroObrasClass.php');
+                                                                            $instanciaCarregaMaterial = new CcadastroObrasClass();
+                                                                            $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
+
                                                                     print '</table>';
                                                                 print '</div>';
-                                                                print '<table class="table tableMateriais">';
-
-                                                                        include('.././Controller/CcadastroObrasClass.php');
-                                                                        $instanciaCarregaMaterial = new CcadastroObrasClass();
-                                                                        $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
-
-                                                                print '</table>';
                                                             print '</div>';
                                                         print '</div>';
-                                                    print '</div>';
 
-                                                }
-                                            ?>
+                                                    }
+                                                ?>
+                                            </div>
                                         </div>
                                     </div>
+                                    <input type="submit" class="btn btn-success" value="Salvar">
                                 </div>
-                                <input type="submit" class="btn btn-success" value="Salvar">
                             </div>
-                        </div>
-                    </form>
-<!--                </div>-->
+                        </form>
+    <!--                </div>-->
+                </div>
             </div>
         </div>
 

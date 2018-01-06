@@ -1,11 +1,19 @@
 <html>
     <?php
 
-    include('.././ClassesPHP/Header.class.php');
-    $instanciaCabecalho = new Header();
-    $instanciaCabecalho -> headerPrincipal('Cadastro de obras');
-    //$instanciaCabecalho -> verificaMenu();
+    session_start();;
 
+//    if(isset($_SESSION['validade'])){
+//
+//        unset($_SESSION['validade']);
+
+        include('.././ClassesPHP/Header.class.php');
+        $instanciaCabecalho = new Header();
+        $instanciaCabecalho->headerPrincipal('Cadastro de obras');
+        //$instanciaCabecalho -> verificaMenu();
+//    }else{
+//        header('Location: /Prefeitura/WebObras/View/ErroPagina.php');
+//    }
     ?>
     <body>
         <div class="row">
@@ -13,6 +21,30 @@
                 <?php
                     include('menu.html');
                 ?>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-sm-12 menuPequeno">
+                <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Opções
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+                    <li class="primeiroElemento">
+                        <a href="indexObras.php">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="cadastroObras.php">Cadastros</a>
+                    </li>
+                    <li>
+                        <a href="#">Relatórios</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cabecalho">
+                    <h3 class="fontePadrao">Resumo de Obras</h3>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-1">
@@ -23,7 +55,6 @@
                             <table class="larguraTable">
                                 <tr class="text-center">
                                     <td>
-                                        <h3 class="fontePadrao">Resumo de Obras</h3>
                                     </td>
                                 </tr>
                                 <tr>

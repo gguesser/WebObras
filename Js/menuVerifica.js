@@ -5,5 +5,6 @@ $(document).ready(function(){
         $(".menuNormal").show();
     }else{
         $(".menuPequeno").show();
+        $(".cabecalho").hide();
     }
 });
