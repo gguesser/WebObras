@@ -37,6 +37,8 @@ elemento-left{
     width: 100%;
 }
 
-.botaoConsultaObra{
-    background-color: green;
+label.error{
+    color: #FF0000 !important;
+    font-size: 12px;
+    font-weight: normal !important;
 }
