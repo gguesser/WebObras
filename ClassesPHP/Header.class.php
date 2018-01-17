@@ -31,6 +31,9 @@
                 //print '<script src=".././Componentes/sweetAlert/dist/sweetalert.min.js"></script>';
                 //print '<link rel="stylesheet" href=".././Componentes/sweetAlert/dist/sweetalert.css">';
 
+                //Relatorios
+                print '<link href="../Estilo/relatorios.css" rel="stylesheet" type="text/css">';
+
                 //Sweet Original
                 print '<script src=".././Componentes/sweetalert2/dist/sweetalert2.min.js"></script>';
                 print '<link rel="stylesheet" href=".././Componentes/sweetalert2/dist/sweetalert2.css">';

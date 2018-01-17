@@ -240,6 +240,7 @@
                                     </div>
                                 </div>
                                 <input type="submit" class="btn btn-success" value="Salvar">
+                                <input type="button" class="btn btn-info" onclick="" value="PDF">
                             </div>
                         </div>
                     </form>
