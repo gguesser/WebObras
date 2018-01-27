@@ -1,11 +1,9 @@
 <?php
 	
-	require('.././ClassesPHP/Header.class.php');
-
-	$instanciaHeader = new Header;
+	use Header\Header;
 
 	print '<html>';
-		$instanciaHeader -> headerPrincipal('SOI-Guaramirim');
+		Header::headerPrincipal('Obras Guaramirim');
 		print '<body>';
 			include('menu.html');
 		print '</body>';

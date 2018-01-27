@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     include('.././Conexao/conexaoDB.php');
     $instanciaConexao = new \conexaoDB\conexaoDB();
     $instanciaConexao -> conexaoBanco();
@@ -13,16 +15,15 @@
         $rua             = $_POST['txtRua'];
         $numero          = $_POST['txtNumero'];
         $bairro          = $_POST['cbbBairro'];
-        $telefoneMorador = $_POST['txtTelefoneDDD'] . ' ' . $_POST['txtTelefone'];
+        $telefoneMorador = $_POST['txtTelefoneDDD'] . '' . $_POST['txtTelefone'];
         $emailMorador    = $_POST['txtEmail'];
         $problema        = $_POST['dscProblema'];
         $fiscal          = $_POST['cbbFiscal'];
-        $dataPrevisao    = $_POST['dtPrevisao'];
+        $dataPrevisao    = date('Y-m-d', strtotime(str_replace("/", "-", $_POST["dtPrevisao"])));
         $status          = $_POST['cbbStatus'];
         $dscAdicional    = $_POST['dscAdicional'];
         $dataConclusao   = NULL;
         $codigoMateriais = NULL;
-
 
         if($protocolo < 1) {
 
@@ -44,25 +45,19 @@
         }
 
         $conexao = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-        $insercaoBanco = mysqli_query($conexao, $sql) or die("Erro");
+        $insercaoBanco = mysqli_query($conexao, $sql);
 
         mysqli_close($conexao);
 
-        if($insercaoBanco){
-
-            print '<script>';
-                print 'alert(\'Obra '.$acao.' com sucesso.\');';
-            print '</script>';
-
+        if(!$insercaoBanco){
+            $_SESSION['erroRequisicao'] = false;
         }else{
-
-            print '<script>';
-                print 'alert(\'Houve algum problema em incluir/alterar esta obra.\');';
-            print '</script>';
+            $_SESSION['erroRequisicao'] = true;
         }
 
     }else{
-        print '<script>';
-            print 'alert(\'Não foi possível acessar a base de dados.\');';
-        print '</script>';
+        $_SESSION['erroRequisicao'] = true;
     }
+
+    $var = "<script>javascript:history.back(-2)</script>";
+    echo $var;

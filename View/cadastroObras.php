@@ -1,46 +1,80 @@
 <?php
 
-    if(array_key_exists('protocolo',$_GET)){
-        $sql = 'SELECT * FROM prefguara_obras WHERE codProtocolo = '.$_GET['protocolo'];
+    include('.././ClassesPHP/Header.php');
 
-        $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
-        $selecaoObra = mysqli_query($conexaoBanco, $sql);
-
-        $resultadoSelecao = mysqli_fetch_assoc($selecaoObra);
-
-        mysqli_close($conexaoBanco);
-    }
 ?>
-<html>
-	<?php
 
-		include('.././ClassesPHP/Header.class.php');
-		$instanciaCabecalho = new Header();
-		$instanciaCabecalho -> headerPrincipal('Cadastro de obras');
-		//$instanciaCabecalho -> verificaMenu();
-	?>
+<html>
+    <?php
+
+        use Header\Header;
+        Header::headerPrincipal('Cadastro de obras');
+
+    ?>
 	<body>
+        <?php
+            session_start();
+
+            if(!isset($_SESSION['validade'])){
+                header('Location: /Prefeitura/WebObras/View/ErroPagina.php');
+            }
+            if(isset($_SESSION['erroRequisicao'])) {
+                if ($_SESSION['erroRequisicao'] == false) {
+         ?>
+                    <script>
+                        swal("Erro", "Houve algum problema em incluir/alterar esta obra.", "error");
+                    </script>
+         <?php
+
+                }else if ($_SESSION['erroRequisicao'] == true){
+
+         ?>
+                    <script>
+                        swal("Bom trabalho", "Obra alterada/incluída com sucesso", "success");
+                    </script>
+        <?php
+                }
+            }
+            unset($_SESSION['erroRequisicao']);
+
+            if(array_key_exists('protocolo',$_GET)){
+                $sql = 'SELECT * FROM prefguara_obras WHERE codProtocolo = '.$_GET['protocolo'];
+
+                $conexaoBanco = mysqli_connect('localhost', 'root', '', 'prefguara_mainBase', '8080');
+                $selecaoObra = mysqli_query($conexaoBanco, $sql);
+
+                $resultadoSelecao = mysqli_fetch_assoc($selecaoObra);
+
+                mysqli_close($conexaoBanco);
+            }else{
+                $explicacao = 'este campo é preenchido automáticamente!';
+            }
+        ?>
         <div class="row">
             <div class="menuNormal">
                 <?php
                     include('menu.html');
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-12 menuPequeno">
-                <button class="btn btn-default dropdown-toggle pull-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Opções
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
+            <div class="menuPequeno">
+                <?php
+                    include('menuMobile.php');
+                ?>
             </div>
-            <div class="col-xs-12 col-sm-12 c1ol-md-12 col-lg-12 cabecalho">
-                <h3 class="fontePadrao">Cadastro de Obra</h3>
+            <div class="row cabecalho">
+                <div class="col-xs-12 colsm-12 col-md-12 col-lg-12">
+                    <h3 class="fontePadrao">Cadastro de Obra</h3>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <div class="col-xs-2">
+                    </div>
+                    <div class="col-xs-4">
+                        <h5 class="pull-left">Usuário: </h5>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h5 class="pull-right">Data: <?php print date('d/m/Y');?></h5>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -50,7 +84,7 @@
 <!--                <div class="container-fluid">-->
                     <form action="../Controller/CcadastroObras.php" method="POST" id="obraForm">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 corpo">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <table class="larguraTable">
@@ -73,7 +107,7 @@
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <label for="">Protocolo</label>
-                                                    <input type="text" class="componente_linha_1" name="txtProtocolo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['codProtocolo'] : NULL;?>" readonly="readonly">
+                                                    <input type="text" class="componente_linha_1" name="txtProtocolo" value="<?php print isset($resultadoSelecao) ? $resultadoSelecao['codProtocolo'] : $explicacao;?>" readonly="readonly">
                                                 </div>
                                                 <div class="col-md-8">
                                                     <label for="">Titulo</label>
@@ -145,7 +179,7 @@
                                                      <label for="">Telefone</label>
                                                      <div class="telefone" style="width: 100%">
                                                          <input type="text" name="txtTelefoneDDD" style="width: 15%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 1, 2) : NULL;?>">
-                                                         <input type="text" name="txtTelefone" style="width: 83%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 3, 9) : NULL;?>">
+                                                         <input type="text" name="txtTelefone" style="width: 83%" value="<?php print isset($resultadoSelecao) ? substr($resultadoSelecao['Telefone'], 3, 10) : NULL;?>">
                                                      </div>
                                                  </div>
                                                  <div class="col-md-4">
@@ -200,8 +234,14 @@
                                                     <input type="hidden" value="<?php print $resultadoSelecao['Status']?>" name="cbbStatus">
                                                 </div>
                                                 <div class="col-md-4">
+                                                    <?php
+                                                        if(isset($resultadoSelecao)) {
+                                                            $aData = explode('-', $resultadoSelecao['dtPrevisao']);
+                                                            $dataFormatada = $aData[2] . '/' . $aData[1] . '/' . $aData[0];
+                                                        }
+                                                    ?>
                                                     <label for="">Data Previsão</label>
-                                                    <input type="text" name="dtPrevisao" class="componente_linha_3">
+                                                    <input type="text" name="dtPrevisao" class="componente_linha_3" value="<?php $resultadoSelecao['dtPrevisao'] ? $dataFormatada : NULL; ?>">
                                                 </div>
                                             </div>
                                             <?php
@@ -223,13 +263,15 @@
                                                                         print '</tr>';
                                                                     print '</table>';
                                                                 print '</div>';
-                                                                print '<table class="table tableMateriais">';
+                                                                print '<div class="table-responsive">';
+                                                                    print '<table class="table tableMateriais">';
 
-                                                                        include('.././Controller/CcadastroObrasClass.php');
-                                                                        $instanciaCarregaMaterial = new CcadastroObrasClass();
-                                                                        $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
+                                                                            include('.././Controller/CcadastroObrasClass.php');
+                                                                            $instanciaCarregaMaterial = new CcadastroObrasClass();
+                                                                            $instanciaCarregaMaterial -> carregaMateriais($resultadoSelecao['codProtocolo']);
 
-                                                                print '</table>';
+                                                                    print '</table>';
+                                                                print '</div>';
                                                             print '</div>';
                                                         print '</div>';
                                                     print '</div>';
@@ -269,7 +311,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-xs-12 col-md-6">
                                 <label for="">Status</label>
                                 <select name="cbbStatus" class="form-contro componente_linha_3">
                                     <?php
@@ -292,8 +334,13 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-
+                            <div class="col-xs-12 col-md-6">
+                                <?php
+                                $aData = explode('-', $resultadoSelecao['dtRegistro']);
+                                $dataFormatada = $aData[2] . '/' . $aData[1] . '/' .  $aData[0];
+                                ?>
+                                <label for="">Criação da obra</label>
+                                <input type="text" class="componente_linha_3" value="<?php print $dataFormatada?>" readonly="readonly">
                             </div>
                         </div>
                         <div class="row">
@@ -464,9 +511,9 @@
             success: function(data) {
                 if(data){
                     $('.tableMateriais').html(data);
-                    alert('Material adicionado com sucesso!');
+                    swal("Bom trabalho!", "Material adicionado a obra com sucesso!", "success");
                 }else{
-                    alert('Problemas ao adicionar material.');
+                    swal("Erro!", "Erro ao adicionar material a obra.","error");
                 }
             }
         });
@@ -481,9 +528,9 @@
             success: function(data) {
                 if(data){
                     $('#cbbMaterialId').html(data);
-                    alert('Novo material adicionado com sucesso à lista de materiais!');
+                    swal("Bom trabalho!", "Material adicionado com sucesso!", "success");
                 }else{
-                    alert('Problemas ao adicionar material à lista de materiais.');
+                    swal("Erro!", "Erro ao adicionar material.","error");
                 }
             }
         });

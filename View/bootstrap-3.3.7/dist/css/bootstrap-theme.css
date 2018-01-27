@@ -3,6 +3,21 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+.btn-space-top{
+  margin-top: 3px;
+}
+.btn-space-right{
+  padding-right: 3px;
+}
+.btn-space-left{
+  margin-left: 3px;
+}
+
+.btn-space-bottom{
+  margin-bottom: 3px;
+}
+
 .btn-default,
 .btn-primary,
 .btn-success,

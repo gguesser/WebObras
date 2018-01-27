@@ -19,7 +19,7 @@
         $_SESSION['validade'] = "ok";
 
         if($resultadoSelect['Privileges'] == 'A'){
-            $redirecionameto = "dashboard.php";
+            $redirecionameto = "indexObras.php";
         }else{
             $redirecionameto = "indexObras.php".$get;
         }

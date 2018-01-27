@@ -1,8 +1,10 @@
 <htlm>
 	<?php
-		require('.././ClassesPHP/Header.class.php');
-		$instanciaHeader = new Header;
-		$instanciaHeader -> headerPrincipal('Secretaria de Infraestrutura');
+
+        include('.././ClassesPHP/Header.php');
+
+        use Header\Header;
+        Header::headerPrincipal('Secretaria de Infraestrutura');
 
 		if(isset($_GET['Erro'])){
 		    print '<script>';
@@ -10,18 +12,21 @@
 		    print '</script>';
         }
 
+        session_start();
+
+		unset($_SESSION['validade']);
 	?>
 	<body>
         <div class="row">
-            <div class="col-xs-12 col-md-9 EsquerdaIndex">
+            <div class="col-xs-12 col-md-9 EsquerdaIndex text-center">
                 <div class="titulo">
                     <h1 class="tituloH1">Web Obras</h1>
                     <h2 class="tituloH2">Secretaria de Infraestrutura</h2>
                 </div>
-                <img src=".././Imagens/atende.php.png" alt="">
+                <img src=".././Imagens/atende.php.png" class="img-responsive">
             </div>
             <div class="col-xs-12 col-md-3 DireitaIndex">
-                <form action=".././Controller/verificaLogin.php" method="POST">
+                <form action=".././Controller/verificaLogin.php" method="POST" id="loginForm">
                     <div class="FundoMenu">
                         <div class="row">
                             <div class="col-xs-12 col-md-12">
@@ -34,7 +39,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 col-md-12">
+                            <div class="col-xs-8 col-md-12">
+                                <a href="#">Esqueçeu sua senha ?</a>
+                            </div>
+                            <div class="col-xs-4 col-md-12">
                                 <input type="submit" name="" value="Entrar" class="btn btn-success pull-right">
                             </div>
                         </div>
@@ -44,3 +52,16 @@
         </div>
 	</body>
 </htlm>
+
+<script>
+    $("#loginForm").validate({
+        rules: {
+            txtUsuario: "required",
+            txtSenha: "required"
+        },
+        messages: {
+            txtUsuario: "Preencha este campo",
+            txtSenha: "Este também.."
+        }
+    });
+</script>

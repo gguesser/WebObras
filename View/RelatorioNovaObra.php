@@ -1,8 +1,23 @@
 <?php
 
-    include('.././ClassesPHP/Header.class.php');
-    $instanciaCabecalho = new Header();
-    $resultado = $instanciaCabecalho -> headerPrincipal('Cadastro de obras');
+    include('.././ClassesPHP/Header.php');
+
+    use Header\Header;
+
+    Header::headerPrincipal('Cadastro de Obras');
+
+    /**Variáveis que compoem o relatório*/
+
+    $morador        = NULL;//$_GET['nome'];
+    $emailMorador   = NULL;//$_GET['email'];
+    $dataRegistro   = NULL;//$_GET['registro'];
+    $protocolo      = NULL;//$_GET['protocolo'];
+    $bairro         = NULL;//$_GET['bairro'];
+    $rua            = NULL;//$_GET['rua'];
+    $fiscal         = NULL;//$_GET['fiscal'];
+    $dataPrevisao   = NULL;//$_GET['previsao'];
+    $status         = NULL;//$_GET['status'];
+    $problema       = NULL;//$_GET['problema'];
 
     $html ='<html>'.
 
@@ -26,39 +41,38 @@
                             <legend>MORADOR</legend>
                             <div class="col-md-6">
                                 <label for="" class="componente_linha_3">Nome:</label>
-                                Guilherme Guesser
+                                '.$morador.'
                                 <label for="" class="componente_linha_3">E-mail:</label>
-                                gui.guesser@hotmaoil.com
+                                '.$emailMorador.'
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="componente_linha_3">Registro:</label>
-                                25/04/2018
+                                '.$dataRegistro.'
                                 <label for="" class="componente_linha_3">Protocolo:</label>
-                                112006067
+                                '.$protocolo.'
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>LOCALIDADE</legend>
                             <div class="col-md-6">
                                 <label for="" class="componente_linha_3">Bairro:</label>
-                                Nova Esperança
+                                '.$bairro.'
                                 <label for="" class="componente_linha_3">Rua:</label>
-                                28 de Agosto
+                                '.$rua.'
                                 <label for="" class="componente_linha_3">Fiscal:</label>
-                                Penguin
+                                '.$fiscal.'
                             </div>
                             <div class="col-md-6">
                                 <label for="" class="componente_linha_3">Previsão:</label>
-                                25/04/2018
+                                '.$dataPrevisao.'
                                 <label for="" class="componente_linha_3">Status:</label>
-                                Aberta
+                                '.$status.'
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>PROBLEMA</legend>
                             <div class="col-md-12">
-                                Esta é a maneira abreviada de você declarar todos os valores para as propriedades das bordas, ou seja, pode-se 
-                                definir valores para as três propriedades das bordas (border-width, border-style e border-color) em uma declaração única
+                                '.$problema.'
                             </div>
                         </fieldset>
                         
@@ -86,20 +100,13 @@
     
     ';
 
-require_once '.././vendor/autoload.php';
+//require_once __DIR__ . '.././vendor/autoload.php';
 
-use Dompdf\Dompdf;
+include(".././Componentes/MPDF57/mpdf.php");
 
-$dompdf = new Dompdf();
-
-$dompdf->loadHtml($html);
-
-$dompdf -> setPaper('letter', 'landscape');
-
-$dompdf -> render();
-//
-//$dompdf -> stream('teste.pdf');
-
-$pdf = $dompdf->output();
-
-file_put_contents("Contratopf.pdf", $pdf);
+$mpdf=new mPDF();
+$mpdf->SetDisplayMode('fullpage');
+$css = file_get_contents(".././Estilo/relatorios.css");
+$mpdf->WriteHTML($css,1);
+$mpdf->WriteHTML($html);
+$mpdf->Output();
