@@ -1,0 +1,99 @@
+.DireitaIndex{
+	background-color: #c0c0c0;
+}
+
+.EsquerdaIndex img{
+	padding: 10%;
+}
+
+.EsquerdaIndex h2{
+	font-size: 22px;
+}
+
+@media screen and (min-width: 769px){
+
+	.EsquerdaIndex{
+		margin-top: 2%;
+	}
+
+	.EsquerdaIndex, .DireitaIndex{
+		height: 100%;
+	}
+
+	.EsquerdaIndex img{
+		padding: 5%;
+	}
+
+	.FundoMenu{
+		padding-top: 70% !important;
+	}
+
+	.estrutura, .corpo{
+		padding-left: 0%;
+		padding-right: 3%;
+	}
+}
+
+.FundoMenu{
+	padding-top: 5%;
+}
+
+.text-center .img-responsive {
+	margin: 0 auto;
+}
+
+.cabecalho{
+	position: absolute;
+	height: 13%;
+	width: 100%;
+	background: #a9a9a9;
+	text-align: center;
+	margin: 0;
+}
+
+.DireitaIndex label{
+	margin-top: 2%;
+}
+
+.panel-default > .panel-heading{
+	background-color: #f0ad4e !important;
+}
+
+.tipoModal:before{
+	background: #000;
+}
+
+.tipoModal, .adicionaMaterial{
+	display: none;
+	z-index: 9999;
+}
+
+/*TABELAS*/
+.painelMateriais{
+	margin-top: 1%;
+}
+
+/*.configuracaoEstrutural{*/
+	/*left: 4%;*/
+/*}*/
+
+.adicionaMaterialnovo{
+	z-index: 1042 !important;
+}
+
+.adicionaMaterial{
+	z-index: 1041 !important;
+}
+
+
+/*NOVA REFORMULAÇÃO*/
+
+.quadro-principal{
+	margin: 2%;
+}
+
+.search input:focus{
+	border-bottom: 1px solid #BDC4D4;
+	line-height:22px;
+	transition: 0.1s all;
+}

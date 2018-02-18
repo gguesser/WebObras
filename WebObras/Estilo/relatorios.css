@@ -1,0 +1,47 @@
+#titulo{
+    padding-top: 3%;
+}
+
+.imgReport{
+    position: relative;
+    top: 7%;
+    width: 43%;
+    height: 85%;
+}
+
+.cabecalhoReport{
+    background-color: lightgoldenrodyellow;
+    height: 20%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.corpoReport{
+    background-color: white;
+    height: 115%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+.rodapeReport{
+    background-color: lightgoldenrodyellow;
+    height: 10%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+
+    text-align: center;
+}
+
+.tituloFieldSet{
+    text-align: center;
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+fieldset{
+    margin: 4%;
+}

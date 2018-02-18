@@ -1,0 +1,48 @@
+.text-center{
+    text-align: center;
+}
+elemento-left{
+    float: left;
+}
+
+.componente_linha_1{
+    width: 100%;
+}
+
+.componente_linha_3{
+    width: 100%;
+}
+
+.componente_linha_metade{
+    width: 50%;
+}
+.rowEspacamento{
+    padding: 2% 2% 2% 2%;
+}
+
+.bordaPadrao{
+    border-radius: 3px;
+}
+
+.fontePadrao{
+    color: whitesmoke;
+    font-size: 2em;
+    -webkit-transition: font-size .3s;
+    -moz-transition: font-size .3s;
+    transition: font-size .3s;
+}
+
+.posicionamentoDireita{
+    display: flow;
+    float: right;
+}
+
+.larguraTable{
+    width: 100%;
+}
+
+label.error{
+    color: #FF0000 !important;
+    font-size: 12px;
+    font-weight: normal !important;
+}

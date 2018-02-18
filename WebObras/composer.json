@@ -1,0 +1,8 @@
+{
+    "autoload": {
+       "psr-0": {"Project": "ClassesPHP/"}
+    },
+    "require": {
+        "knplabs/knp-snappy": "^1.0"
+    }
+}
