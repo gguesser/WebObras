@@ -134,102 +134,102 @@
                             ?>
                         </div>
                     </div>
-                    <div class="row quadro-principal">
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <b>Abertas</b>
-                                    <input type="text" value="pesquisar" class="pull">
-                                </div>
-                                <?php
-
-                                    $resultadoSelecao = Obra::selecionaObras(1);
-
-                                    print '<div class="table-responsive">';
-                                        print '<table class="table">';
-
-                                        print '<tr>';
-                                            print '<td><b>Protocolo</b></td>';
-                                            print '<td><b>Titulo</b></td>';
-                                            print '<td><b>Bairro</b></td>';
-                                            print '<td><b>Abertura</b></td>';
-                                            print '<td><b>Fiscal</b></td>';
-                                        print '</tr>';
-
-                                        foreach($resultadoSelecao as $obrasSelecionadas){
-                                            print '<tr>';
-                                                print '<td>';
-                                                    $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
-                                                    print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Titulo']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Bairro']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['dtRegistro']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Fiscal']);
-                                                print '</td>';
-                                            print '</tr>';
-                                        }
-
-                                        print '</table>';
-                                    print '</div>';
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <b>Concluídas</b>
-                                    <input type="text" value="pesquisar" class="pull">
-                                </div>
-                                <?php
-
-                                    $resultadoSelecao = Obra::selecionaObras(2);
-
-                                    print '<div class="table-responsive">';
-                                        print '<table class="table">';
-
-                                        print '<tr>';
-                                            print '<td><b>Protocolo</b></td>';
-                                            print '<td><b>Titulo</b></td>';
-                                            print '<td><b>Bairro</b></td>';
-                                            print '<td><b>Conclusao</b></td>';
-                                            print '<td><b>Fiscal</b></td>';
-                                        print '</tr>';
-
-                                        foreach($resultadoSelecao as $obrasSelecionadas){
-                                            print '<tr>';
-                                                print '<td>';
-                                                    $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
-                                                    print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Titulo']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Bairro']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['dtConclusao']);
-                                                print '</td>';
-                                                print '<td>';
-                                                    print utf8_encode($obrasSelecionadas['Fiscal']);
-                                                print '</td>';
-                                            print '</tr>';
-                                        }
-
-                                        print '</table>';
-                                     print '</div>';
-                                ?>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="row quadro-principal">-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading">-->
+<!--                                    <b>Abertas</b>-->
+<!--                                    <input type="text" value="pesquisar" class="pull">-->
+<!--                                </div>-->
+<!--                                --><?php
+//
+//                                    $resultadoSelecao = Obra::selecionaObras(1);
+//
+//                                    print '<div class="table-responsive">';
+//                                        print '<table class="table">';
+//
+//                                        print '<tr>';
+//                                            print '<td><b>Protocolo</b></td>';
+//                                            print '<td><b>Titulo</b></td>';
+//                                            print '<td><b>Bairro</b></td>';
+//                                            print '<td><b>Abertura</b></td>';
+//                                            print '<td><b>Fiscal</b></td>';
+//                                        print '</tr>';
+//
+//                                        foreach($resultadoSelecao as $obrasSelecionadas){
+//                                            print '<tr>';
+//                                                print '<td>';
+//                                                    $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
+//                                                    print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Titulo']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Bairro']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['dtRegistro']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Fiscal']);
+//                                                print '</td>';
+//                                            print '</tr>';
+//                                        }
+//
+//                                        print '</table>';
+//                                    print '</div>';
+//                                ?>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="panel panel-default">-->
+<!--                                <div class="panel-heading">-->
+<!--                                    <b>Concluídas</b>-->
+<!--                                    <input type="text" value="pesquisar" class="pull">-->
+<!--                                </div>-->
+<!--                                --><?php
+//
+//                                    $resultadoSelecao = Obra::selecionaObras(2);
+//
+//                                    print '<div class="table-responsive">';
+//                                        print '<table class="table">';
+//
+//                                        print '<tr>';
+//                                            print '<td><b>Protocolo</b></td>';
+//                                            print '<td><b>Titulo</b></td>';
+//                                            print '<td><b>Bairro</b></td>';
+//                                            print '<td><b>Conclusao</b></td>';
+//                                            print '<td><b>Fiscal</b></td>';
+//                                        print '</tr>';
+//
+//                                        foreach($resultadoSelecao as $obrasSelecionadas){
+//                                            print '<tr>';
+//                                                print '<td>';
+//                                                    $metodo = 'cadastroObras.php?protocolo='.$obrasSelecionadas['codProtocolo'];
+//                                                    print '<a href="'.$metodo.'">'.$obrasSelecionadas['codProtocolo'].'</a>';
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Titulo']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Bairro']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['dtConclusao']);
+//                                                print '</td>';
+//                                                print '<td>';
+//                                                    print utf8_encode($obrasSelecionadas['Fiscal']);
+//                                                print '</td>';
+//                                            print '</tr>';
+//                                        }
+//
+//                                        print '</table>';
+//                                     print '</div>';
+//                                ?>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>

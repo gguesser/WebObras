@@ -17,38 +17,32 @@
 		unset($_SESSION['validade']);
 	?>
 	<body>
-        <div class="row">
-            <div class="col-xs-12 col-md-9 EsquerdaIndex text-center">
-                <div class="titulo">
-                    <h1 class="tituloH1">Web Obras</h1>
-                    <h2 class="tituloH2">Secretaria de Infraestrutura</h2>
+        <div class="col-xs-12 col-md-9 esquerda-index text-center">
+                <h1>Web Obras</h1>
+                <h2>Secretaria de Infraestrutura</h2>
+                <img src=".././Imagens/atende.php.png">
+        </div>
+        <div class="col-xs-12 col-md-3 direita-index">
+            <form action=".././Controller/verificaLogin.php" method="POST" id="loginForm">
+                <div class="col-xs-12">
+                    <label class="">Usuário: </label>
                 </div>
-                <img src=".././Imagens/atende.php.png" class="img-responsive">
-            </div>
-            <div class="col-xs-12 col-md-3 DireitaIndex">
-                <form action=".././Controller/verificaLogin.php" method="POST" id="loginForm">
-                    <div class="FundoMenu">
-                        <div class="row">
-                            <div class="col-xs-12 col-md-12">
-                                <form action="main.php" method="post">
-                                    <label class="componente_linha_3">Usuário: </label>
-                                    <input type="text" name="txtUsuario" class="componente_linha_3">
-                                    <label class="componente_linha_3">Senha: </label>
-                                    <input type="password" name="txtSenha" class="componente_linha_3">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8 col-md-12">
-                                <a href="#">Esqueçeu sua senha ?</a>
-                            </div>
-                            <div class="col-xs-4 col-md-12">
-                                <input type="submit" name="" value="Entrar" class="btn btn-success pull-right">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                <div class="col-xs-12">
+                    <input type="text" name="txtUsuario" class="componente_linha_3">
+                </div>
+                <div class="col-xs-12">
+                    <label class="">Senha: </label>
+                </div>
+                <div class="col-xs-12">
+                    <input type="password" name="txtSenha" class="componente_linha_3">
+                </div>
+                <div class="col-xs-6 col-md-12 espacamento">
+                    <a href="#">Esqueçeu sua senha ?</a>
+                </div>
+                <div class="col-xs-6 col-md-12 espacamento">
+                    <input type="submit" name="" value="Entrar" class="btn btn-success pull-right">
+                </div>
+            </form>
         </div>
 	</body>
 </htlm>

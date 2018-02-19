@@ -1,64 +1,27 @@
-.DireitaIndex{
+.esquerda-index img{
+	padding: 15%;
+}
+.direita-index{
 	background-color: #c0c0c0;
+	padding: 5%;
 }
 
-.EsquerdaIndex img{
-	padding: 10%;
+.direita-index label, .espacamento{
+	padding-top: 2%;
 }
+@media screen and (min-width: 980px){
 
-.EsquerdaIndex h2{
-	font-size: 22px;
-}
-
-@media screen and (min-width: 769px){
-
-	.EsquerdaIndex{
-		margin-top: 2%;
+	.direita-index{
+		padding: 1%;
+		padding-top: 18%;
 	}
-
-	.EsquerdaIndex, .DireitaIndex{
+	.esquerda-index, .direita-index{
 		height: 100%;
 	}
-
-	.EsquerdaIndex img{
-		padding: 5%;
-	}
-
-	.FundoMenu{
-		padding-top: 70% !important;
-	}
-
-	.estrutura, .corpo{
-		padding-left: 0%;
-		padding-right: 3%;
+	.esquerda-index img{
+		padding: 20%;
 	}
 }
-
-.FundoMenu{
-	padding-top: 5%;
-}
-
-.text-center .img-responsive {
-	margin: 0 auto;
-}
-
-.cabecalho{
-	position: absolute;
-	height: 13%;
-	width: 100%;
-	background: #a9a9a9;
-	text-align: center;
-	margin: 0;
-}
-
-.DireitaIndex label{
-	margin-top: 2%;
-}
-
-.panel-default > .panel-heading{
-	background-color: #f0ad4e !important;
-}
-
 .tipoModal:before{
 	background: #000;
 }
@@ -72,10 +35,6 @@
 .painelMateriais{
 	margin-top: 1%;
 }
-
-/*.configuracaoEstrutural{*/
-	/*left: 4%;*/
-/*}*/
 
 .adicionaMaterialnovo{
 	z-index: 1042 !important;
