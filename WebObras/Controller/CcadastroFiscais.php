@@ -17,7 +17,4 @@
 
     $insercapBanco = mysqli_query($conexaoBanco, $sql);
 
-    if($insercapBanco){
-
-        Fiscal::selecionaFiscais();
-    }
+    print Fiscal::carregaFiscais();

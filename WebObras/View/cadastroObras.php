@@ -61,7 +61,7 @@
             <div class="row display-table-row">
                 <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                     <div class="logo">
-                        <img src="../Imagens/atende.php.png" alt="prefeitura_guaramirim">
+                        <img src="../Imagens/atende.php.png" alt="prefeitura_guaramirim" class="img-responsive">
                     </div>
                     <div class="navi">
                         <ul>

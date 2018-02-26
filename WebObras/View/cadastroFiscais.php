@@ -23,7 +23,7 @@
             <div class="row display-table-row">
                 <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                     <div class="logo">
-                        <img src="../Imagens/atende.php.png" alt="prefeitura_guaramirim">
+                        <img src="../Imagens/atende.php.png" alt="prefeitura_guaramirim" class="img-responsive">
                     </div>
                     <div class="navi">
                         <ul>
@@ -64,15 +64,15 @@
                                 </div>
                             </nav>
                             <div class="search hidden-xs">
-                                <h3>Cadastro de Obras</h3>
+                                <h3>CADASTRO DE FISCAIS</h3>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="pull-right">
-                                <label for="">Usuário: Guilherme</label>
+                                <label for="">Usuário: <?php print $_SESSION['nomeUsuario']?></label>
                                 <br>
-                                <label for="">Dia: 21/02/2018</label>
+                                <label for="">Dia: <?php print date('d/m/Y')?></label>
                             </div>
                         </div>
                     </header>
@@ -86,27 +86,18 @@
                                         <h4><b>FISCAIS</b></h4>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-success pull-right" onclick="acaoModais('ativa', '.adicionaEdita')" data-toggle="modal" data-target=".adicionaEdita" >Incluir um novo</button>
+                                        <button type="button" class="btn btn-success pull-right" onclick="acaoModais('ativa', 'adicionaEdita')" data-toggle="modal" data-target="#adicionaEdita" >Incluir um novo</button>
                                     </td>
                                 </tr>
                             </table>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="fiscais">
                             <table class="table">
-                                <tr>
-                                    <td><b>Nome</b></td>
-                                    <td><b>Àrea</b></td>
-                                    <td><b>Obras Abertas</b></td>
-                                    <td><b>Operante</b></td>
-                                    <td></td>
-                                </tr>
-
                                 <?php
 
                                     Fiscal::carregaFiscais();
 
                                 ?>
-
                             </table>
                         </div>
                     </div>
@@ -114,7 +105,7 @@
             </div>
 
             <!--        MODAL DE CADASTRO/EDIÇÂO DE FISCAL-->
-            <div class="modal adicionaEdita" tabindex="-1" role="dialog">
+            <div class="modal" id="adicionaEdita" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -124,7 +115,7 @@
                                         <h5 class="modal-title"><b>Novo Fiscal</b></h5>
                                     </td>
                                     <td>
-                                        <button type="button" onclick="acaoModais('desativa', '.adicionaMaterialnovo')" class="close" data-dismiss="modal" aria-label="Close">
+                                        <button type="button" onclick="acaoModais('desativa', 'adicionaEdita')" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </td>
@@ -168,12 +159,16 @@
 
 <script>
     function acaoModais(prAcao, prModal){
+
+        modal = $('#' + prModal);
+
         if (prAcao == 'ativa') {
-            $(prModal).show();
+
+            modal.show();
 
         } else {
 
-            $(prModal).hide();
+            modal.hide();
 
         }
     }
@@ -184,17 +179,76 @@
             type: 'GET',
             dataType: "html",
             data: 'Nome=' + $("#txtNome").val() + '&Telefone=' + $('#txtTelefone').val() + '&AreaFiscalizar=' + $("#txtArea").val() + '&Operante=' + $("#cbbOperante :selected").text(),
-            success: function(data) {
-
-                console.log(data);
-
+            success: function(data)
+            {
                 if(data){
+
+                    $('#fiscais').html(data);
+
+                    $('#txtNome').val('');
+                    $('#txtTelefone').val('');
+                    $('#txtArea').val('');
+
+                    var modal = 'adicionaEdita';
+
                     swal("Bom trabalho!", "Novo fiscal adicionado com sucesso!", "success");
+
                 }else{
                     swal("Erro!", "Erro ao adicionar fiscal.","error");
                 }
             }
         });
+    }
+
+    function solicitaExclusaoFiscal(prCodFiscal) {
+
+        swal({
+                title: 'Deseja exlucuir fiscal o fiscal ?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Não',
+                confirmButtonClass: 'confirm-class',
+                cancelButtonClass: 'cancel-class',
+                closeOnConfirm: false,
+                closeOnCancel: false
+            })
+            .then((isConfirm) => {
+
+                if(isConfirm.value)
+                {
+                    excluiFiscal(prCodFiscal);
+                }
+
+            })
+
+    }
+
+    function excluiFiscal(prCodFiscal){
+
+        $.ajax({
+            url: '.././Controller/CexcluiFiscais.php',
+            type: 'GET',
+            dataType: "html",
+            data: 'codFiscal=' + prCodFiscal,
+            success: function(data)
+            {
+
+                console.log(data);
+
+                if(data){
+                    swal("Bom trabalho!", "Fiscal excluido com sucesso!", "success");
+
+                    $('#fiscais').html(data);
+
+                }else{
+                    swal("Erro!", "Erro ao exlcuir fiscal.","error");
+                }
+            }
+        });
+
     }
 
     // Validação

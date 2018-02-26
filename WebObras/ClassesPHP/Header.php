@@ -48,19 +48,6 @@
             print '</head>';
         }
 
-        public function verificaMenu()
-        {
-            print '$(document).ready(function(){;';
-            print 'var tam = $(window).width();';
-
-            print 'if (tam >=1024){';
-            print '$(".menuNormal").show();';
-            print '}else{';
-            print '$(".menuPequeno").hide();';
-            print '}';
-            print '});';
-        }
-
         public static final function menu($prTitulo, $prUsuario)
         {
 
